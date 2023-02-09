@@ -24,8 +24,7 @@ const AuthForm = () => {
     setIsLoading(true);
     if (isLogin) {
       try {
-        const response = await fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDRuVNpK483qXGu6QL_IOKaFmOV7seq2_4",
+        const response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDRuVNpK483qXGu6QL_IOKaFmOV7seq2_4",
           {
             method: "POST",
             body: JSON.stringify({
@@ -68,6 +67,7 @@ const AuthForm = () => {
           }
         );
         const data = await response.json();
+        console.log(data);
 
         if (!response.ok) {
           throw new Error(data.error.message);
