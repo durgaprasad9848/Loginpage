@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext,useNavigate } from "react";
 import AuthContext from "../store/auth-context";
 
 import classes from "./AuthForm.module.css";
@@ -6,6 +6,8 @@ import classes from "./AuthForm.module.css";
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const[isLoading,setIsLoading]=useState(false);
+
+  const navigate = useNavigate();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -43,7 +45,8 @@ const AuthForm = () => {
           throw new Error(data.error.message);
         }
         console.log(data.idToken);
-        ctx.storeToken(data.idToken)
+        ctx.storeToken(data.idToken);
+        navigate('/');
         // ctx.logInToken(data.idToken)
 
       } catch (error) {
