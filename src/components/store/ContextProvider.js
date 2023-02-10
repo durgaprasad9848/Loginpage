@@ -1,28 +1,44 @@
 import { useState } from "react";
 import AuthContext from "./auth-context";
+import {useNavigate} from 'react-router-dom';
 
 const ContextProvider = (props) => {
-  const [loginToken, setLoginToken] = useState("");
+  // const initialToken = localStorage.getItem("token");
+  
+  const [loginToken, setLoginToken] = useState();
+
+  const navigate = useNavigate();
 
   const storeTokenHandler = (idToken) => {
+    
+   localStorage.setItem("token",idToken);
+    
     setLoginToken(() => {
       return idToken;
     });
   };
 
   const removeTokenHandler = () => {
+    localStorage.removeItem("token");
     setLoginToken(() => "");
+    navigate('/');
   };
+const userIsLogggedIn = !!loginToken;
+  
+ 
 
-  const cartObject = {
+  const contextValue = {
+    isLoggedIn:userIsLogggedIn,
     logInToken: loginToken,
     storeToken: storeTokenHandler,
     removeToken: removeTokenHandler,
   };
-  console.log(cartObject.logInToken);
+
+ 
+ 
 
   return (
-    <AuthContext.Provider value={cartObject}>
+    <AuthContext.Provider value={contextValue}>
       {props.children}
     </AuthContext.Provider>
   );

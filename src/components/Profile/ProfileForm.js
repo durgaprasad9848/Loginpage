@@ -1,6 +1,7 @@
-import {useRef,useContext,useNavigate} from 'react';
+import {useRef,useContext} from 'react';
 import AuthContext from '../store/auth-context';
 import classes from './ProfileForm.module.css';
+import {useNavigate} from 'react-router-dom';
 
 const ProfileForm = () => {
 
@@ -27,7 +28,7 @@ const ProfileForm = () => {
     }).then((res)=>{
         // assumption : Always success.
 
-      navigate('/');
+          navigate('/');
     });
 
   }

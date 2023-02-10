@@ -1,14 +1,20 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import AuthContext from '../store/auth-context';
 
 
 import classes from './MainNavigation.module.css';
 
 const MainNavigation = () => {
-  const ctx = useContext(AuthContext)
+  const ctx = useContext(AuthContext);
+ // const toShow = localStorage.getItem("token") === null;
   const toShow =  ctx.logInToken.length===0
   console.log(toShow)
+  const navigate = useNavigate();
+
+ 
+ 
+
   return (
     <header className={classes.header}>
       <Link to='/'>
