@@ -8,7 +8,8 @@ import classes from './MainNavigation.module.css';
 const MainNavigation = () => {
   const ctx = useContext(AuthContext);
  // const toShow = localStorage.getItem("token") === null;
-  const toShow =  ctx.logInToken.length===0
+ console.log("HI",ctx.logInToken);
+  const toShow =  ctx.logInToken===null;
   console.log(toShow)
   const navigate = useNavigate();
 

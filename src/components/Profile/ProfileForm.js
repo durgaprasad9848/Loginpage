@@ -1,9 +1,11 @@
-import {useRef,useContext} from 'react';
+import {useRef,useContext, useEffect} from 'react';
 import AuthContext from '../store/auth-context';
 import classes from './ProfileForm.module.css';
 import {useNavigate} from 'react-router-dom';
 
 const ProfileForm = () => {
+
+  useEffect(()=>{console.log("profile section")},[]);
 
   const navigate = useNavigate();
 

@@ -6,18 +6,23 @@ import ContextProvider from "./components/store/ContextProvider";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import { NotFound } from "./pages/NotFound";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 
 function App() {
+  
  
+  
+
   const authCtx = useContext(AuthContext);
   return (
     <ContextProvider>
+   
       <Layout>
         <Routes>
           <Route path="/" exact element={<HomePage/>}/>
         {!authCtx.isLoggedIn && (
           <Route path="/auth" exact element = {<AuthPage/>}/>
+          
         )}
         {!authCtx.isLoggedIn && (
           <Route path="/profile" exact element = {<UserProfile/>}/>
